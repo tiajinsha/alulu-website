@@ -15,6 +15,12 @@ export default defineConfig({
   }), */
   integrations: [react()],
   vite: {
+    define: {
+      'process.env.ALULU_BASE_URL': JSON.stringify(process.env.ALULU_BASE_URL),
+      'process.env.REF_TOKEN_URL': JSON.stringify(process.env.REF_TOKEN_URL),
+      'process.env.ALULU_REGISTER_URL': JSON.stringify(process.env.ALULU_REGISTER_URL),
+      'process.env.TOKEN_NAME': JSON.stringify(process.env.TOKEN_NAME),
+    },
     /*     ssr: {
       noExternal: ['path-to-regexp'],
     }, */
