@@ -1,0 +1,18 @@
+{
+  "editor.codeActionsOnSave": {
+    "editor.formatOnSave": true,
+    "source.fixAll.eslint": true
+  },
+  "prettier.documentSelectors": ["**/*.astro"],
+  "prettier.bracketSameLine": true,
+  "prettier.useTabs": true,
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.workingDirectories": [
+    ".eslintrc.js",
+    {
+      "mode": "auto"
+    }
+  ],
+}

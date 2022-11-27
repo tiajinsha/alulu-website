@@ -1,0 +1,46 @@
+<script>
+  /*   Object.defineProperty(Image.prototype, 'x-url-signature', {
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  });
+  window.onload = () => {
+    let imgList = document.getElementsByTagName('img') as any;
+    Array.from(imgList).map((item: any) => {
+      let request = new XMLHttpRequest();
+      request.responseType = 'blob';
+      request.open('get', '/api/getImages', true);
+      request.onreadystatechange = (e) => {
+        if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+          item.src = URL.createObjectURL(request.response);
+          console.log(request.response);
+          item.onload = () => {
+            URL.revokeObjectURL(item.src);
+          };
+        }
+      };
+      request.send(null);
+    });
+  }; */
+  window.onload = () => {
+    let imgList = document.getElementsByTagName('img') as any;
+    Array.from(imgList).map((item: any) => {
+      item.crossOrigin = 'Anonymous';
+      let url = item.getAttribute('src');
+      let xurlsignature = item.getAttribute('x-url-signature');
+      let request = new XMLHttpRequest();
+      request.responseType = 'blob';
+      request.open('get', url as string, true);
+      request.setRequestHeader('x-url-signature', xurlsignature);
+      request.onreadystatechange = (e) => {
+        if (request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+          item.src = URL.createObjectURL(request.response);
+          item.onload = () => {
+            URL.revokeObjectURL(item.src);
+          };
+        }
+      };
+      request.send(null);
+    });
+  };
+</script>

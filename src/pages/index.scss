@@ -1,0 +1,124 @@
+@import '../components/TopBanner/TopBanner.scss';
+@import '../components/Player/Player.scss';
+.ShareContainer {
+  width: 100%;
+  .OperationArea {
+    width: 100%;
+    height: px2rem(40);
+    display: flex;
+    background: #111315;
+    .IconLable {
+      height: 100%;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      color: #ffff;
+      .icon {
+        font-size: px2rem(20);
+      }
+      span {
+        font-size: 12px;
+        margin-left: 5px;
+        font-family: 'Blinker';
+        font-style: normal;
+        font-weight: 400;
+        color: #ffff;
+        font-feature-settings: 'tnum' on, 'lnum' on;
+      }
+    }
+  }
+  .ShareComment {
+    width: 100%;
+    background: var(--TextColor);
+    margin-bottom: px2rem(50);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    .comment-wrapper {
+      box-sizing: border-box;
+      padding: px2rem(8) px2rem(16);
+      font-size: px2rem(14);
+      font-weight: 600;
+      font-family: 'Blinker';
+      font-style: normal;
+      color: rgba(29, 43, 64, 0.5);
+      border-bottom: 1px solid rgba(29, 43, 64, 0.05);
+      border-radius: 10px 10px 0px 0px;
+    }
+    .comment-list {
+      margin-top: px2rem(5);
+      padding: px2rem(10) px2rem(16);
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      .avatar-wrapper {
+        flex: 0 0 px2rem(32);
+        img {
+          width: px2rem(32);
+          border-radius: 4px;
+          background: #fff;
+          height: px2rem(32);
+        }
+      }
+      .conmments-wrapper {
+        flex: 1;
+        padding: 0 px2rem(10);
+        .comments-title {
+          font-family: 'Blinker';
+          font-style: normal;
+          line-height: 100%;
+          padding-bottom: px2rem(5);
+          .displayname {
+            color: #1d2b40;
+            font-size: px2rem(16);
+            font-weight: 600;
+          }
+          & > span:nth-child(2) {
+            padding: 0 px2rem(5);
+            color: rgba(29, 43, 64, 0.5);
+          }
+          .time {
+            font-size: 14px;
+            color: rgba(29, 43, 64, 0.5);
+          }
+        }
+        .comments-content {
+          font-style: normal;
+          font-weight: 400;
+          font-size: px2rem(15);
+          line-height: 120%;
+          font-feature-settings: 'ss03' on;
+          color: #1d2b40;
+        }
+        .comments-btn-wrapper {
+          display: flex;
+          justify-content: space-between;
+          padding-top: px2rem(8);
+          .left-wrapper {
+            font-weight: 600;
+            box-sizing: content-box;
+            @include center;
+            cursor: pointer;
+            font-size: px2rem(14);
+            color: rgba(29, 43, 64, 0.5);
+            & > span:nth-child(2) {
+              margin-left: px2rem(10);
+            }
+          }
+          .right-wrapper {
+            display: flex;
+            align-items: center;
+            .icon {
+              font-size: px2rem(20);
+              color: rgba(29, 43, 64, 1);
+            }
+            & > span:nth-child(1) {
+              color: #1d2b40;
+              font-size: px2rem(14);
+              margin-right: px2rem(5);
+            }
+          }
+        }
+      }
+    }
+  }
+}

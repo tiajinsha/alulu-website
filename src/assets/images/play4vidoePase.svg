@@ -1,0 +1,15 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b_10096_125045)">
+<path d="M40 72C57.6731 72 72 57.6731 72 40C72 22.3269 57.6731 8 40 8C22.3269 8 8 22.3269 8 40C8 57.6731 22.3269 72 40 72Z" fill="black" fill-opacity="0.5"/>
+</g>
+<path d="M34 40V30C34 29.176 34.9408 28.7056 35.6 29.2L42 34L48.9333 39.2C49.4667 39.6 49.4667 40.4 48.9333 40.8L42 46L35.6 50.8C34.9408 51.2944 34 50.824 34 50V40Z" fill="white"/>
+<path d="M35.6 50.8L35.3 50.4L35.6 50.8ZM34.5 40V30H33.5V40H34.5ZM35.3 29.6L41.7 34.4L42.3 33.6L35.9 28.8L35.3 29.6ZM41.7 34.4L48.6333 39.6L49.2333 38.8L42.3 33.6L41.7 34.4ZM48.6333 40.4L41.7 45.6L42.3 46.4L49.2333 41.2L48.6333 40.4ZM41.7 45.6L35.3 50.4L35.9 51.2L42.3 46.4L41.7 45.6ZM34.5 50V40H33.5V50H34.5ZM35.3 50.4C34.9704 50.6472 34.5 50.412 34.5 50H33.5C33.5 51.2361 34.9111 51.9416 35.9 51.2L35.3 50.4ZM48.6333 39.6C48.9 39.8 48.9 40.2 48.6333 40.4L49.2333 41.2C50.0333 40.6 50.0333 39.4 49.2333 38.8L48.6333 39.6ZM34.5 30C34.5 29.588 34.9704 29.3528 35.3 29.6L35.9 28.8C34.9111 28.0584 33.5 28.7639 33.5 30H34.5Z" fill="white"/>
+<defs>
+<filter id="filter0_b_10096_125045" x="-2" y="-2" width="84" height="84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="5"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_10096_125045"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_10096_125045" result="shape"/>
+</filter>
+</defs>
+</svg>

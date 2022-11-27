@@ -1,0 +1,15 @@
+<script>
+  if (navigator.serviceWorker) {
+    window.addEventListener('load', () => {
+      console.log('开始注册ServiceWorker');
+      navigator.serviceWorker
+        .register('./serviceworker.js')
+        .then((reg) => {
+          console.log('ServiceWorker register success: ', reg);
+        })
+        .catch((err) => {
+          console.log('ServiceWorker register failed: ', err);
+        });
+    });
+  }
+</script>

@@ -1,0 +1,49 @@
+{
+  "name": "alulu-main-website",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --host",
+    "start": "astro dev",
+    "build": "npm run build-sass && astro build",
+    "build-sass": "node-sass  ./src/styles/index.scss ./src/assets/styles/index.css",
+    "sass-dev": "node-sass --watch ./src/styles/index.scss ./src/assets/styles/index.css",
+    "fmt": "prettier --write --plugin-search-dir=. ./src",
+    "preview": "wrangler pages dev ./dist",
+    "astro": "astro",
+    "eslint-fix": "eslint ./ --ext .js,.ts,.tsx --fix",
+    "eslint-init": "eslint --init"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^4.0.1",
+    "@astrojs/node": "^3.0.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "11.10.5",
+    "@fontsource/roboto": "4.5.8",
+    "@mui/icons-material": "5.10.9",
+    "@mui/lab": "5.0.0-alpha.107",
+    "@mui/material": "5.10.13",
+    "astro": "^1.4.4",
+    "bulma": "0.9.4",
+    "cross-env": "^7.0.3",
+    "moment": "^2.29.4",
+    "react-transition-group": "^4.4.5",
+    "sass": "^1.56.1",
+    "vconsole": "^3.15.0",
+    "wrangler": "^2.4.4"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^1.1.4",
+    "@typescript-eslint/eslint-plugin": "5.41.0",
+    "@typescript-eslint/parser": "5.41.0",
+    "css-loader": "^5.2.7",
+    "eslint": "8.27.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "node-sass": "^8.0.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.5",
+    "react": "^18.2.0"
+  }
+}

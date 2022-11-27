@@ -1,0 +1,29 @@
+stages:
+  - test
+
+
+image: registry.gitlab.com/aluluhq/containers/alulu-web-ci-image:main
+
+before_script:
+  - source ~/.profile
+  - cp ${NPMRC_FILE} ~/.npmrc
+
+tests:
+  stage: test
+  script:
+    - pnpm install
+    - npx playwright install
+    - pnpm test
+  after_script:
+    - >
+
+  cache:
+    key: ${CI_COMMIT_REF_SLUT}-e2e
+    paths:
+      - node_modules
+  artifacts:
+    paths:
+      - out/report
+    when: on_failure
+    reports:
+      junit: out/report/report.xml
