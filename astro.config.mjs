@@ -8,15 +8,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare({ mode: 'directory' }),
+  //adapter: cloudflare({ mode: 'directory' }),
+  adapter: cloudflare(),
   /*   adapter: node({
     mode: 'standalone',
   }), */
   integrations: [react()],
   vite: {
-    ssr: {
+    /*     ssr: {
       noExternal: ['path-to-regexp'],
-    },
+    }, */
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
