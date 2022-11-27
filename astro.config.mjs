@@ -6,10 +6,12 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
   output: 'server',
-  //adapter: cloudflare({ mode: 'directory' }),
-  adapter: cloudflare(),
+  adapter: cloudflare({ mode: 'advanced' }),
+  // adapter: cloudflare(),
   /*   adapter: node({
     mode: 'standalone',
   }), */
