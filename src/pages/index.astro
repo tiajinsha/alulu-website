@@ -11,7 +11,7 @@ const ENV = {
 
 var commentList: any = [];
 var VidoeInfo: getVideoType[] = [];
-const token = Astro.cookies.get(ENV.TOKEN_NAME).value;
+const token = Astro.cookies.get("access_token").value;
 const PageUrl = Astro.request.url;
 const video_ids = Astro.url.searchParams.get('video_ids') || '01GH57C05CRNT6V1Z0VNGS13D5';
 // examp  http:127.0.0.1:3000/?video_ids=01GH57C05CRNT6V1Z0VNGS13D5
@@ -47,7 +47,7 @@ const setData = (data: { items: [] }) => {
     };
   });
 };
-if (!token) {
+if (false) {
   try {
     const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
     const aluluTokenJson = await response.json();
