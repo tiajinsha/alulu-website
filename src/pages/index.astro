@@ -52,9 +52,6 @@ if (!token) {
     const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
     const aluluTokenJson = await response.json();
     setCookies(aluluTokenJson.access_token);
-/*     return Astro.redirect(
-      '/?refresh_token=' + aluluTokenJson.refresh_token + `&href=${PageUrl}`,
-    ); */
   } catch (error) {
     console.log('Failed to register user' + error);
   }

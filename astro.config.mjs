@@ -7,7 +7,7 @@ import path from 'path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare({ mode: '"advanced"' }),
+  adapter: cloudflare({ mode: 'advanced' }),
   /*   adapter: node({
     mode: 'standalone',
   }), */
@@ -16,10 +16,5 @@ export default defineConfig({
     /*     ssr: {
       noExternal: ['path-to-regexp'],
     }, */
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      },
-    },
   },
 });
