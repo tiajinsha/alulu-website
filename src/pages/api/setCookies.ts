@@ -8,14 +8,14 @@ const ENV = {
 };
 
 export async function get({ cookies, request }: APIContext) {
-  const res = await fetch('https://identity.aludev.io/register_anonymous', {
+  const res = await fetch(ENV.ALULU_REGISTER_URL + '/register_anonymous', {
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
     },
     body: 'platform_device_id=web01&device_name=alulu-main-website',
   }).then((data) => data.json());
-  await fetch('http://165.227.181.143:8000/api/v1/user/@me/initialize', {
+  await fetch(ENV.ALULU_BASE_URL + '/api/v1/user/@me/initialize', {
     method: 'POST',
     headers: {
       accept: 'application/json',
@@ -32,14 +32,14 @@ export async function get({ cookies, request }: APIContext) {
 export async function post({ cookies, request }: APIContext) {
   try {
     const refresh_token = await request.json();
-    const response = await fetch('https://identity.aludev.io/token', {
+    const response = await fetch(ENV.REF_TOKEN_URL, {
       method: 'post',
       body: `grant_type=refresh_token&refresh_token=${refresh_token}`,
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
       },
     }).then((data) => data.json());
-    cookies.set('access_token', response.access_token, {
+    cookies.set(ENV.TOKEN_NAME, response.access_token, {
       path: '/',
     });
     return new Response(JSON.stringify(response.refresh_token), {

@@ -11,16 +11,14 @@ const ENV = {
 
 var commentList: any = [];
 var VidoeInfo: getVideoType[] = [];
-const token =
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUdKWVdEQlBSMTRNNUVRQkNBWU5TTUMxUiIsImlhdCI6MTY2OTYzMTIyNSwibmJmIjoxNjY5NjMxMjI1LCJqdGkiOiIwMUdKWVdEQlgzOENBRkZKMDVZUVQwRERTOCIsImV4cCI6MTY2OTYzMzAyNSwiaXNzIjoidXJuOmFsdWx1OmF1dGgiLCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlLCJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZGV2aWNlX2lkIjoiMDFHSkZDMUZLNDhUTVROVjUyMDVIREFNOTAiLCJpc191c2VyX2Fub255bW91cyI6dHJ1ZX0.b3lIKbLFLE9esKqmkvXOVr1_Kr1YZP2jt5lIYloWWG2dwlk4ETYjFjUkc9fWHqEvLO35D1hRzv3JwzcG44LVkxzdDdNhwH1e2QLX1faLhDOWPtvqJPl-TY0bp8EeQ5jp9SCzZSexJIvSi0uVAyPUIz8Ha2qVrOfbmRo4siVaa6A9OMjEynW5nuZB7fXN1Izy-YhB7W-3Jbup7LydYB2jS7u1QVdgoHqaFi9RWsjTzoS4XoXJNxh_Byk7yaVlYh7jthcIxCm8R3E1K7tQ75REjUCUozRbJpJeVnDbRQiTsfQ_OEKp2bP05bgdksqLdjj6DJBSIlWzwoy3Mcwfp2p7lQ';
-//const token = Astro.cookies.get("access_token").value;
+const token = Astro.cookies.get(ENV.TOKEN_NAME).value;
 const PageUrl = Astro.request.url;
 const video_ids = Astro.url.searchParams.get('video_ids') || '01GH57C05CRNT6V1Z0VNGS13D5';
 // examp  http:127.0.0.1:3000/?video_ids=01GH57C05CRNT6V1Z0VNGS13D5
 const localhost = Astro.url.origin;
 
 const setCookies = (str: string) => {
-  Astro.cookies.set('access_token', str, {
+  Astro.cookies.set(ENV.TOKEN_NAME, str, {
     path: '/',
   });
 };
@@ -49,7 +47,7 @@ const setData = (data: { items: [] }) => {
     };
   });
 };
-if (false) {
+if (!token) {
   try {
     const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
     const aluluTokenJson = await response.json();
@@ -68,9 +66,7 @@ if (false) {
   try {
     const responseList = await Promise.all(
       apiList.map((url) => {
-        return fetch(url, {
-          mode: 'cors',
-          credentials: 'include',
+        return fetch(localhost + url, {
           headers: {
             Authorization: setAuthorization(token),
           },

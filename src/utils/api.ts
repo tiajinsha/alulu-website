@@ -1,7 +1,7 @@
 import type { getCommentType, getVideoType } from 'src/modules/module';
 
 const ENV = {
-  ALULU_BASE_URL: 'http://165.227.181.143:8000',
+  ALULU_BASE_URL: import.meta.env.ALULU_BASE_URL,
 };
 
 export interface ErrorType {
@@ -16,6 +16,8 @@ export async function get<T>(
 ): Promise<T> {
   const response = await fetch(`${ENV.ALULU_BASE_URL}${endpoint}`, {
     method: 'get',
+    credentials: 'same-origin',
+    mode: 'cors',
     headers: incomingReq.headers,
   });
   // eslint-disable-next-line no-console
@@ -34,6 +36,8 @@ export async function post<T>(
 ): Promise<T> {
   const response = await fetch(`${ENV.ALULU_BASE_URL}${endpoint}`, {
     method: 'post',
+    credentials: 'same-origin',
+    mode: 'cors',
     headers: incomingReq.headers,
   });
   if (!response.ok) {
