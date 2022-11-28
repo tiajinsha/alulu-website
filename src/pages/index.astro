@@ -13,7 +13,7 @@ var commentList: any = [];
 var VidoeInfo: getVideoType[] = [];
 const token = Astro.cookies.get(ENV.TOKEN_NAME).value;
 const PageUrl = Astro.request.url;
-const video_ids = Astro.url.searchParams.get('video_ids');
+const video_ids = Astro.url.searchParams.get('video_ids') || '01GH57C05CRNT6V1Z0VNGS13D5';
 // examp  http:127.0.0.1:3000/?video_ids=01GH57C05CRNT6V1Z0VNGS13D5
 const localhost = Astro.url.origin;
 
@@ -52,9 +52,9 @@ if (!token) {
     const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
     const aluluTokenJson = await response.json();
     setCookies(aluluTokenJson.access_token);
-    return Astro.redirect(
-      '/ ?refresh_token=' + aluluTokenJson.refresh_token + `&href=${PageUrl}`,
-    );
+/*     return Astro.redirect(
+      '/?refresh_token=' + aluluTokenJson.refresh_token + `&href=${PageUrl}`,
+    ); */
   } catch (error) {
     console.log('Failed to register user' + error);
   }
