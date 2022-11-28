@@ -1,7 +1,7 @@
 import type { getCommentType, getVideoType } from 'src/modules/module';
 
 const ENV = {
-  ALULU_BASE_URL: import.meta.env.ALULU_BASE_URL,
+  ALULU_BASE_URL: 'http://165.227.181.143:8000',
 };
 
 export interface ErrorType {

@@ -12,7 +12,7 @@
     "preview": "wrangler pages dev ./dist",
     "preview_publish": "npx wrangler pages publish dist",
     "preview_login": "wrangler login",
-    "preview_init": "wrangler  init my-app",
+    "preview_init": "wrangler pages deployment tail",
     "preview_dev": "wrangler dev",
     "preview_deployment": "wrangler dev",
     "astro": "astro",

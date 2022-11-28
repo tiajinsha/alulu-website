@@ -8,7 +8,7 @@ const ENV = {
 };
 
 export async function get({ cookies, request }: APIContext) {
-  const res = await fetch(ENV.ALULU_REGISTER_URL + '/register_anonymous', {
+  const res = await fetch('https://identity.aludev.io/register_anonymous', {
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
@@ -32,7 +32,7 @@ export async function get({ cookies, request }: APIContext) {
 export async function post({ cookies, request }: APIContext) {
   try {
     const refresh_token = await request.json();
-    const response = await fetch(ENV.REF_TOKEN_URL, {
+    const response = await fetch('https://identity.aludev.io/token', {
       method: 'post',
       body: `grant_type=refresh_token&refresh_token=${refresh_token}`,
       headers: {
