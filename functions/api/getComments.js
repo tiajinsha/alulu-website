@@ -8,7 +8,10 @@ export async function onRequestGet({ request }) {
       headers: request.headers,
     },
   ).then((res) => res.json());
-  return new Response(JSON.stringify(response), {
-    status: response.status,
-  });
+  return new Response(
+    JSON.stringify({ data: response, status: response.status, statusText: response.statusText }),
+    {
+      status: response.status,
+    },
+  );
 }
