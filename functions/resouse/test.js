@@ -1,8 +1,9 @@
-addEventListener('fetch', (event) => {
-  event.respondWith(handleRequest(event.request));
-});
+export default {
+  async fetch(request, env) {
+    return await handleRequest(request);
+  },
+};
 
-/** * Fetch and log a request * @param {Request} request */
-function handleRequest(request) {
-  return new Response('Hello worker!');
+async function handleRequest(request) {
+  return new Response('Hello world');
 }
