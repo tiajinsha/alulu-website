@@ -16,7 +16,6 @@ export async function get<T>(
 ): Promise<T> {
   const response = await fetch(`${ENV.ALULU_BASE_URL}${endpoint}`, {
     method: 'get',
-    credentials: 'same-origin',
     headers: incomingReq.headers,
   });
   // eslint-disable-next-line no-console
@@ -35,7 +34,6 @@ export async function post<T>(
 ): Promise<T> {
   const response = await fetch(`${ENV.ALULU_BASE_URL}${endpoint}`, {
     method: 'post',
-    credentials: 'same-origin',
     headers: incomingReq.headers,
   });
   if (!response.ok) {
