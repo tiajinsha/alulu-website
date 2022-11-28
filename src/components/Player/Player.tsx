@@ -1,10 +1,10 @@
+import LoadingSvg from '../../assets/images/loadingSvg/tail-spin.svg';
+import btnPase from '../../assets/images/play4vidoePase.svg';
+import AluluButtonaluluImg from '../../assets/images/AluluButtonaluluImg.svg';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import SvgIcon from '@mui/icons-material/VolumeOff';
 import React, { useMemo, useRef, useState } from 'react';
 import { defaultVideoType, getVideoType } from 'src/modules/module';
-import btnPase from '@/assets/images/play4vidoePase.svg';
-import LoadingSvg from '@/assets/images/loadingSvg/tail-spin.svg';
-import AluluButtonaluluImg from '@/assets/images/AluluButtonaluluImg.svg';
 export interface PlayerProps {
   VideoInfo: getVideoType[];
 }
