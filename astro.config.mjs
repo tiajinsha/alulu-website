@@ -8,8 +8,6 @@ export default defineConfig({
   output: 'server',
   adapter: cloudflare({ mode: 'directory' }),
   integrations: [react()],
-  outDir: './dist',
-  srcDir: './src/pages',
   vite: {
     site: 'https://eb1ffbf7.alulu-website.pages.dev/',
     resolve: {
