@@ -18,7 +18,7 @@ const video_ids = Astro.url.searchParams.get('video_ids') || '01GH57C05CRNT6V1Z0
 const localhost = Astro.url.origin;
 
 const setCookies = (str: string) => {
-  Astro.cookies.set(ENV.TOKEN_NAME, str, {
+  Astro.cookies.set("access_token", str, {
     path: '/',
   });
 };
