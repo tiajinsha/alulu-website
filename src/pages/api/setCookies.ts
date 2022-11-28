@@ -15,7 +15,7 @@ export async function get({ cookies, request }: APIContext) {
     },
     body: 'platform_device_id=web01&device_name=alulu-main-website',
   }).then((data) => data.json());
-  await fetch(ENV.ALULU_BASE_URL + '/api/v1/user/@me/initialize', {
+  await fetch('http://165.227.181.143:8000/api/v1/user/@me/initialize', {
     method: 'POST',
     headers: {
       accept: 'application/json',
@@ -39,7 +39,7 @@ export async function post({ cookies, request }: APIContext) {
         'content-type': 'application/x-www-form-urlencoded',
       },
     }).then((data) => data.json());
-    cookies.set(ENV.TOKEN_NAME, response.access_token, {
+    cookies.set('access_token', response.access_token, {
       path: '/',
     });
     return new Response(JSON.stringify(response.refresh_token), {
