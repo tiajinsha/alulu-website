@@ -6,3 +6,4 @@ export const get = async ({ request }: APIContext) => {
     status: response.status,
   });
 };
+/* adawd */
