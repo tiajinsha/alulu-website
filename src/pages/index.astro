@@ -69,6 +69,8 @@ if (false) {
     const responseList = await Promise.all(
       apiList.map((url) => {
         return fetch(url, {
+          mode: 'cors',
+          credentials: 'include',
           headers: {
             Authorization: setAuthorization(token),
           },

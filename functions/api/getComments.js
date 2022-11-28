@@ -5,6 +5,8 @@ export async function onRequestGet({ request }) {
     `http://165.227.181.143:8000/api/v1/comment?comment_type=Video&limit=200&subject_id=${video_ids}`,
     {
       method: 'get',
+      mode: 'cors',
+      credentials: 'include',
       headers: request.headers,
     },
   ).then((res) => res.json());
