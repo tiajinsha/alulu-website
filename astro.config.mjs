@@ -9,7 +9,6 @@ export default defineConfig({
   adapter: cloudflare(),
   integrations: [react()],
   vite: {
-    site: 'https://eb1ffbf7.alulu-website.pages.dev/',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
