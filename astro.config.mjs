@@ -6,12 +6,12 @@ import path from 'path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({ mode: 'directory' }),
   integrations: [react()],
+  outDir: './dist',
+  srcDir: './src/pages',
   vite: {
-    ssr: {
-      noExternal: ['path-to-regexp'],
-    },
+    site: 'https://eb1ffbf7.alulu-website.pages.dev/',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
