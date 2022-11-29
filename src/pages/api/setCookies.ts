@@ -15,7 +15,7 @@ export async function get({ cookies, request }: APIContext) {
     },
     body: 'platform_device_id=web01&device_name=alulu-main-website',
   }).then((data) => data.json());
-  await fetch(ENV.ALULU_BASE_URL + '/api/v1/user/@me/initialize', {
+  await fetch('http://165.227.181.143:8000' + '/api/v1/user/@me/initialize', {
     method: 'POST',
     headers: {
       accept: 'application/json',
@@ -32,7 +32,7 @@ export async function get({ cookies, request }: APIContext) {
 export async function post({ cookies, request }: APIContext) {
   try {
     const refresh_token = await request.json();
-    const response = await fetch(ENV.REF_TOKEN_URL, {
+    const response = await fetch('https://identity.aludev.io/token', {
       method: 'post',
       body: `grant_type=refresh_token&refresh_token=${refresh_token}`,
       headers: {
