@@ -1,4 +1,6 @@
 name = "alulu_web_service"
 main = "dist/_worker.js"
-route="dist/_routes"
 compatibility_date = "2022-11-28"
+
+[site]
+bucket = "./dist"
