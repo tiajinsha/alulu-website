@@ -16,8 +16,6 @@ export async function get<T>(
 ): Promise<T> {
   const response = await fetch(`${ENV.ALULU_BASE_URL}${endpoint}`, {
     method: 'get',
-    credentials: 'same-origin',
-    mode: 'cors',
     headers: incomingReq.headers,
   });
   // eslint-disable-next-line no-console
@@ -36,8 +34,6 @@ export async function post<T>(
 ): Promise<T> {
   const response = await fetch(`${ENV.ALULU_BASE_URL}${endpoint}`, {
     method: 'post',
-    credentials: 'same-origin',
-    mode: 'cors',
     headers: incomingReq.headers,
   });
   if (!response.ok) {
@@ -57,7 +53,7 @@ export async function getVideoinfo(incomingReq: Request): Promise<getVideoinfoTy
   const video_ids = url.searchParams.get('video_ids');
   return get<getVideoinfoType>(
     incomingReq,
-    `/api/v1/video?video_ids=${video_ids}`,
+    `/api/v1/video?video_ids=01GH57C05CRNT6V1Z0VNGS13D5`,
     async (response) => {
       const Videoinfo: getVideoType[] = response.status === 200 ? await response.json() : null;
       return { data: Videoinfo, status: response.status, statusText: response.statusText };
@@ -76,7 +72,7 @@ export async function getComments(incomingReq: Request): Promise<getCommentsType
   const video_ids = url.searchParams.get('video_ids');
   return get<getCommentsType>(
     incomingReq,
-    `/api/v1/comment?comment_type=Video&limit=200&subject_id=${video_ids}`,
+    `/api/v1/comment?comment_type=Video&limit=200&subject_id=01GH57C05CRNT6V1Z0VNGS13D5`,
     async (response) => {
       const Videoinfo = response.status === 200 ? await response.json() : null;
       return { data: Videoinfo, status: response.status, statusText: response.statusText };

@@ -7,9 +7,9 @@ import { setAuthorization } from 'src/utils/utils';
 
 const ENV = {
   TOKEN_NAME: import.meta.env.TOKEN_NAME,
-  TEST_URL: import.meta.env.TEST_URL,
 };
 
+var errorStatus1 = null;
 var commentList: any = [];
 var VidoeInfo: getVideoType[] = [];
 const token = Astro.cookies.get(ENV.TOKEN_NAME).value;
@@ -18,20 +18,86 @@ const video_ids = Astro.url.searchParams.get('video_ids') || '01GH57C05CRNT6V1Z0
 // examp  http:127.0.0.1:3000/?video_ids=01GH57C05CRNT6V1Z0VNGS13D5
 const localhost = Astro.url.origin;
 
-console.log(localhost);
 const setCookies = (str: string) => {
   Astro.cookies.set(ENV.TOKEN_NAME, str, {
     path: '/',
   });
 };
 
-const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
-const aluluTokenJson = await response.json();
-setCookies(aluluTokenJson.access_token);
+const setData = (data: { items: [] }) => {
+  const strTime = (time: number) => {
+    var timestamp = time / 1000;
+    if (timestamp >= 86400) {
+      return (timestamp / 86400).toFixed(0) + 'd';
+    } else if (timestamp >= 3600 && timestamp < 86400) {
+      return (timestamp / 3600).toFixed(0) + 'h';
+    } else if (timestamp > 60 && timestamp < 3600) {
+      return (timestamp / 60).toFixed(0) + 'm';
+    } else {
+      return timestamp.toFixed(0) + 's';
+    }
+  };
+  commentList = data.items?.map((item: any) => {
+    return {
+      avatar: item.content.Comment.author_profile_photo.url,
+      'x-url-signature': item.content.Comment.author_profile_photo.headers['x-url-signature'],
+      author_display_name: item.content.Comment.author_display_name,
+      content: item.content.Comment.content,
+      likes: item.content.Comment.num_likes,
+      createtime: strTime(new Date().getTime() - item.content.Comment.created_at * 1000),
+    };
+  });
+};
+if (!token) {
+  try {
+    const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
+    const aluluTokenJson = await response.json();
+    setCookies(aluluTokenJson.access_token);
+    return Astro.redirect(
+      '/refreshToken?refresh_token=' + aluluTokenJson.refresh_token + `&href=${PageUrl}`,
+    );
+  } catch (error) {
+    console.log('Failed to register user' + error);
+  }
+} else {
+  let apiList = [
+    `/api/getVideoinfo?video_ids=${video_ids}`,
+    `/api/getComments?video_ids=${video_ids}`,
+  ];
+  try {
+    const responseList = await Promise.all(
+      apiList.map((url) => {
+        return fetch(localhost + url, {
+          headers: {
+            Authorization: setAuthorization(token),
+          },
+        }).then((res) => res.json());
+      }),
+    );
+    responseList.map((item) => {
+      if (item.status != 200) {
+        throw item.status;
+      }
+    });
+    VidoeInfo = responseList[0].data;
+    setData(responseList[1].data);
+  } catch (errorStatus: any) {
+    if (errorStatus.status === 401) {
+      return Astro.redirect(`/refreshToken?href=${PageUrl}`);
+    } else if (errorStatus.status === 404) {
+      return Astro.redirect(`/404`);
+    } else {
+      errorStatus1 = errorStatus;
+    }
+  }
+}
 ---
 
 <Layout title="alulu">
-  <div>
-    {aluluTokenJson.access_token}
+  <div class="ShareContainer">
+    123
+    {token}
+    {errorStatus1 ? errorStatus1 : JSON.stringify(VidoeInfo)}
+    {errorStatus1 ? errorStatus1 : JSON.stringify(commentList)}
   </div>
 </Layout>
