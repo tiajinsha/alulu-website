@@ -16,7 +16,7 @@ const token = Astro.cookies.get(ENV.TOKEN_NAME).value;
 const PageUrl = Astro.request.url;
 const video_ids = Astro.url.searchParams.get('video_ids') || '01GH57C05CRNT6V1Z0VNGS13D5';
 // examp  http:127.0.0.1:3000/?video_ids=01GH57C05CRNT6V1Z0VNGS13D5
-const localhost =ENV.ALULU_BASE_URL;
+const localhost ="https://awdddd.754671297.workers.dev";
 
 const setCookies = (str: string) => {
   Astro.cookies.set(ENV.TOKEN_NAME, str, {
@@ -50,7 +50,7 @@ const setData = (data: { items: [] }) => {
 };
 if (!token) {
   try {
-    const response = await fetch(localhost + `/api/setCookies`, { method: 'get' });
+    const response = await fetch(localhost + `/api/setCookies`, { method: 'get' }); 
     const aluluTokenJson = await response.json();
     setCookies(aluluTokenJson.access_token);
     return Astro.redirect(
