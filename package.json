@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "npm run build-sass && astro build",
     "build-sass": "node-sass  ./src/styles/index.scss ./src/assets/styles/index.css",
     "sass-dev": "node-sass --watch ./src/styles/index.scss ./src/assets/styles/index.css",
     "fmt": "prettier --write --plugin-search-dir=. ./src",
     "preview": "wrangler pages dev ./dist",
     "publish": "wrangler publish",
+    "cloudflare": "astro add cloudflare",
     "astro": "astro",
     "eslint-fix": "eslint ./ --ext .js,.ts,.tsx --fix",
     "eslint-init": "eslint --init"
